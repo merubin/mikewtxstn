@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="//thingspeak.com/highcharts-3.0.8.js"></script>
+  <script type="text/javascript" src="//thingspeak.com/exporting.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="future"></div>
+    <div id="created_at"></div>
+    <div id="entry_id"></div>
+    <div id="field1"></div>
+    <div id="field2"></div>
+    <div id="field3"></div>
+    <div id="field4"></div>
+    <div id="field5"></div>
+  <form id="form" id="chat_form">
+    <input id="chat_input" type="text">
+    <input type="submit" value="Send">
+  </form>
+
+  <div id="chart-container">
+     <img alt="Ajax loader" src="//thingspeak.com/assets/loader-transparent.gif" style="position: absolute; margin: auto; top: 500; left: 0; right: 0; bottom: 0;" />
+   </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"> </script>
+  <script src="chart.js"> </script>
+
+
+</body>
+</html>
