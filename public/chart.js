@@ -16,7 +16,7 @@ var series_2_color = '#00aaff';
 // chart title
 var chart_title = 'Humidity & Temperature 12504 Chasbarb Terrace Herndon VA';
 // y axis title
-var y_axis_title = 'Values';
+var y_axis_title = 'Temp Deg °C   %Humidity';
 
 // user's timezone offset
 var my_offset = new Date().getTimezoneOffset();
@@ -33,14 +33,8 @@ function createChart() {
 }
 
 // when the document is ready
-$(document).on('ready', function() {
+$(document).on('ready', redrawChart);
 
-  addChart();
-  // add the first series
-  addSeries(series_1_channel_id, series_1_field_number, series_1_read_api_key, series_1_results, series_1_color);
-  // add the second series
-  addSeries(series_2_channel_id, series_2_field_number, series_2_read_api_key, series_2_results, series_2_color);
-});
 
 // add the base chart
 function addChart() {
@@ -75,7 +69,7 @@ function addChart() {
     },
     xAxis: {
       type: 'datetime',
-      title: { text: 'Date' }
+      title: { text: 'Time' }
     },
     yAxis: { title: { text: y_axis_title } },
     exporting: { enabled: false },
