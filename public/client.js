@@ -2,7 +2,7 @@
 
 var socket = io.connect('http://localhost:4200');
 socket.on('connect', function(data) {
-   socket.emit('join', 'Hello World from client');
+   socket.emit('join', 'ClientFE Now Connected');
 });
 
 socket.on('broad', function(data) {

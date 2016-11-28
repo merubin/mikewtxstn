@@ -24,9 +24,17 @@ console.log("Time Offset=", my_offset)
 // chart variable
 var my_chart;
 
+function createChart() {
+  addChart();
+  // add the first series
+  addSeries(series_1_channel_id, series_1_field_number, series_1_read_api_key, series_1_results, series_1_color);
+  // add the second series
+  addSeries(series_2_channel_id, series_2_field_number, series_2_read_api_key, series_2_results, series_2_color);
+}
+
 // when the document is ready
 $(document).on('ready', function() {
-  // add a blank chart
+
   addChart();
   // add the first series
   addSeries(series_1_channel_id, series_1_field_number, series_1_read_api_key, series_1_results, series_1_color);
@@ -73,7 +81,7 @@ function addChart() {
     exporting: { enabled: false },
     legend: { enabled: false },
     credits: {
-      text: '(c) Rubinworld.com)',
+      text: 'GA Project 4 Mike Rubin',
       href: 'https://thingspeak.com/',
       style: { color: '#D62020' }
     }
@@ -115,4 +123,10 @@ function addSeries(channel_id, field_number, api_key, results, color) {
 function getChartDate(d) {
   // offset in minutes is converted to milliseconds and subtracted so that chart's x-axis is correct
   return Date.parse(d) - (my_offset * 60000);
+}
+
+var myVar = setInterval(redrawChart, 1000*30);
+
+function redrawChart() {
+createChart();
 }
