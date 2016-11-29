@@ -1,6 +1,6 @@
 
 
-var socket = io.connect('http://localhost:4200');
+var socket = io.connect('/');
 socket.on('connect', function(data) {
    socket.emit('join', 'ClientFE Now Connected');
    drawBarChart(0)
