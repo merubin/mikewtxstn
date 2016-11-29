@@ -1,4 +1,5 @@
 // app.js
+const PORT = 4200
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -58,5 +59,5 @@ io.on('connection', function(client) {
 
 });
 
-console.log("Listening on port 4200")
-server.listen(4200);
+console.log("Listening on port ",PORT)
+server.listen(process.env.PORT || PORT);
