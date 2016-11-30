@@ -1,11 +1,3 @@
-// var rubin_channel_id=parseInt(process.env.THINGSPEAK_RUBIN_CHANNEL_ID)
-// var thingspeak_api_key=process.env.THINGSPEAK_API_READ_KEY
-//
-//
-// console.log("rubin_channel 176785=" ,rubin_channel_id)
-// console.log("thingspeak_api_keyYXYMDONR71M6WO7Y=",thingspeak_api_key)
-
-
 
 // variables for the first series
 var series_1_channel_id = 176785;

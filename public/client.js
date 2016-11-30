@@ -38,9 +38,14 @@ function updateBarChart(value) {
     var data = [value];
     drawBarChart(data);
 };
+socket.on('offline', function (data){
+  console.log("received Offline Message")
+  $('#Mode').html(`Mode:${data.Mode}` )
+});
 socket.on('broad', function(data) {
 
          let datastr=data
+         $('#Mode').html("")
          $('#created_at').html(`Time Stamp:${data.created_at}`)
          $('#entry_id').html(`Entry:${data.entry_id}` )
          $('#field1').html(`Temp °C:${data.field1}` )

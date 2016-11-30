@@ -8,13 +8,17 @@ var  wxConnection = class {
       }
 
         wxLastReading(reading) {
-          if (this.lastreading===reading) {
+           let timestamp=reading.created_at
+          if (this.lastreading===timestamp) {
+            console.log(timestamp,this.lastreading,this.lastreading_ct);
             this.lastreading_ct++;
+            return(this.lastreading_ct)
           }
           else{
-            console.log(reading,this.lastreading,this.lastreading_ct);
-            this.lastreading=reading;
+            console.log(timestamp,this.lastreading,this.lastreading_ct);
+            this.lastreading=timestamp;
             this.lastreading_ct=0
+            return(this.lastreading_ct)
           }
         }
         wxConnected() {

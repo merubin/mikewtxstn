@@ -6,7 +6,11 @@ body {
   background: url("/img/rubin_house.png");
   background-size: cover;
 }
-
+#Mode{
+  color: red;
+  font-size: 24px;
+  padding: 10px;
+}
 #rt_data {
   color: white;
   font-size: 24px;

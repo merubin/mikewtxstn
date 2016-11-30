@@ -4,6 +4,8 @@
 // app.js
 const PORT = 4200
 const TXTMSG_NOTIFY=false       /* flag for text message notification */
+const MAX_TIME_OUTS=2
+var firstTimeOffline=false
 var rubin_channel_id=parseInt(process.env.THINGSPEAK_RUBIN_CHANNEL_ID)
 var text_magic_api_key=process.env.TEXTMAGIC_API_KEY
 var rubin_notify_phone=process.env.RUBIN_NOTIFY_PHONE
@@ -54,8 +56,22 @@ setInterval(function(){
    console.log(obj2)
   latestresponse=obj2
   if (connection) {
-    console.log("sending results");
+    console.log("sending results1");
+    if (wxCstat.wxLastReading(latestresponse)  > MAX_TIME_OUTS) {
+      console.log("OFFLINE Now");
+      io.emit('offline', {Mode: 'Offline'}) ;
+      if (!firstTimeOffline) {
+        let c = new TMClient('mikerubin', text_magic_api_key);
+        firstTimeOffline=true
+        c.Messages.send({text: 'Rubin-WTX Weather Stn Offline at:'+latestresponse.created_at, phones: rubin_notify_phone }, function(err, res){
+            console.log('Messages.send()', err, res);
+        });
+      } /* !firstTimeOffline */
+    } /* MAX_TIME_OUTS */
+    else {
+    firstTimeOffline=false;
     io.emit('broad', latestresponse);
+  }
   }
 })
 .catch(function (err) {
@@ -81,7 +97,7 @@ io.on('connection', function(client) {
   client.on('messages', function(data) {
     client.emit('broad', data);
     wxCstat.wxLastReading(data)
-    console.log("sending results");
+    console.log("sending results2=",data);
     client.broadcast.emit('broad',data);
   });
 
@@ -90,7 +106,7 @@ io.on('connection', function(client) {
 if (TXTMSG_NOTIFY) {
 
 console.log("now Logging into Txt Msg")
-var c = new TMClient('mikerubin', text_magic_api_key);
+let c = new TMClient('mikerubin', text_magic_api_key);
 c.Messages.send({text: 'Starting Rubin-WTX Weather Stn', phones: rubin_notify_phone }, function(err, res){
     console.log('Messages.send()', err, res);
 });

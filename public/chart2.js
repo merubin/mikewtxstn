@@ -1,23 +1,18 @@
-// var rubin_channel_id=parseInt(process.env.THINGSPEAK_RUBIN_CHANNEL_ID)
-// var thingspeak_api_key=process.env.THINGSPEAK_API_READ_KEY
-//
-//
-// console.log("rubin_channel 176785=" ,rubin_channel_id)
-// console.log("thingspeak_api_keyYXYMDONR71M6WO7Y=",thingspeak_api_key)
 
-
-
+var rubin_channel_id=parseInt(process.evn.THINGSPEAK_RUBIN_CHANNEL_ID)
+var thingspeak_api_key=process.env.THINGSPEAK_API_READ_KEY
+var rubin_notify_phone=process.env.RUBIN_NOTIFY_PHONE
 // variables for the first series
-var series_1_channel_id = 176785;
+var series_1_channel_id = rubin_channel_id;
 var series_1_field_number = 1;
-var series_1_read_api_key = 'YXYMDONR71M6WO7Y';
+var series_1_read_api_key = thingspeak_api_key;
 var series_1_results = 10;
 var series_1_color = '#d62020';
 
 // variables for the second series
-var series_2_channel_id = 176785;
+var series_2_channel_id = rubin_channel_id;
 var series_2_field_number = 2;
-var series_2_read_api_key = 'YXYMDONR71M6WO7Y';
+var series_2_read_api_key = thingspeak_api_key;
 var series_2_results = 10;
 var series_2_color = '#00aaff';
 
