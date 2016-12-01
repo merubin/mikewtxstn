@@ -1,4 +1,4 @@
-
+/* class to keep connection status infromation */
 
 var  wxConnection = class {
       constructor(){

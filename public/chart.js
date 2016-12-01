@@ -1,11 +1,6 @@
-// var rubin_channel_id=parseInt(process.env.THINGSPEAK_RUBIN_CHANNEL_ID)
-// var thingspeak_api_key=process.env.THINGSPEAK_API_READ_KEY
-//
-//
-// console.log("rubin_channel 176785=" ,rubin_channel_id)
-// console.log("thingspeak_api_keyYXYMDONR71M6WO7Y=",thingspeak_api_key)
-
-
+/*****************************************************************************
+*   Mike Rubin Project 4 Charting Module
+/*****************************************************************************/
 
 // variables for the first series
 var series_1_channel_id = 176785;
@@ -32,6 +27,10 @@ console.log("Time Offset=", my_offset)
 // chart variable
 var my_chart;
 
+
+/*****************************************************************************
+* Function createChart   Called to create a line chart of Temp and Pressure
+******************************************************************************/
 function createChart() {
   addChart();
   // add the first series
@@ -39,6 +38,10 @@ function createChart() {
   // add the second series
   addSeries(series_2_channel_id, series_2_field_number, series_2_read_api_key, series_2_results, series_2_color);
 }
+
+/*********************************************************************************
+*    Helper Functions to generate line chart pieces
+**********************************************************************************/
 
 // when the document is ready
 $(document).on('ready', redrawChart);
@@ -127,6 +130,7 @@ function getChartDate(d) {
   return Date.parse(d) - (my_offset * 60000);
 }
 
+/* set timer to redraw chart every 30 seconds */
 var myVar = setInterval(redrawChart, 1000*30);
 
 function redrawChart() {

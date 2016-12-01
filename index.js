@@ -1,19 +1,21 @@
 
+/*******************************************************************************
+*   Mike Rubin Project 4   WX Station Dashboard
+*******************************************************************************/
 
 
-// app.js
-const PORT = 4200
+/* Program Constants */
+
+const PORT = 4200               /* Local Port for testing */
 const TXTMSG_NOTIFY=false       /* flag for text message notification */
-const MAX_TIME_OUTS=2
+const MAX_TIME_OUTS=2           /* Wait 1 minute of no response before going offline */
+
+/* Global Variables */
 var firstTimeOffline=false
 var rubin_channel_id=parseInt(process.env.THINGSPEAK_RUBIN_CHANNEL_ID)
 var text_magic_api_key=process.env.TEXTMAGIC_API_KEY
 var rubin_notify_phone=process.env.RUBIN_NOTIFY_PHONE
 
-
-console.log("rubin_channel =" ,rubin_channel_id)
-console.log("text_magic_api_key=",text_magic_api_key)
-console.log("rubin_notify_phone=",rubin_notify_phone)
 
 var listeningPort = process.env.PORT || PORT       /* port address for Heroku */
 var express = require('express');
@@ -26,13 +28,7 @@ var connection = false
 
 var wxCstat= new WxConnectStatus()
 
-console.log(" Connection status at start",wxCstat.wxConnected())
-console.log(" setting connected",wxCstat.wxConnect())
-console.log(" Connection after connected",wxCstat.wxConnected())
-console.log(" setting disconnected",wxCstat.wxDisconnect())
-console.log(" Connection after dis connect",wxCstat.wxConnected())
 /* Thinkspeak configuration information */
-var lastTimestamp=""
 
 const request = require('request-promise')
 const options = {
@@ -53,12 +49,12 @@ setInterval(function(){
     }
     return value;
   });
-   console.log(obj2)
+
   latestresponse=obj2
   if (connection) {
-    console.log("sending results1");
+
     if (wxCstat.wxLastReading(latestresponse)  > MAX_TIME_OUTS) {
-      console.log("OFFLINE Now");
+      console.log("OFFLINE Now");  /* Alert User we are offline */
       io.emit('offline', {Mode: 'Offline'}) ;
       if (!firstTimeOffline) {
         let c = new TMClient('mikerubin', text_magic_api_key);
@@ -78,7 +74,7 @@ setInterval(function(){
   console.log(err)
 })
 
-}, 15 * 1000);
+}, 15 * 1000);  /* Poll ThinkSpeak every 30 seconds for new information */
 
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res,next) {
@@ -103,7 +99,7 @@ io.on('connection', function(client) {
 
 });
 /* TextMagic Msg Integration */
-if (TXTMSG_NOTIFY) {
+if (TXTMSG_NOTIFY) {  /* only in testing will we start off by sending text message that unit has restarted */
 
 console.log("now Logging into Txt Msg")
 let c = new TMClient('mikerubin', text_magic_api_key);
