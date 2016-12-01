@@ -6,7 +6,7 @@ var  wxConnection = class {
         this.lastreading=""
         this.lastreading_ct=0
       }
-
+       /* Determine if our last reading was the same as last time by examation of entry timestamp */
         wxLastReading(reading) {
            let timestamp=reading.created_at
           if (this.lastreading===timestamp) {
@@ -15,7 +15,7 @@ var  wxConnection = class {
             return(this.lastreading_ct)
           }
           else{
-            console.log(timestamp,this.lastreading,this.lastreading_ct);
+            /* new good reading received reset the counter for alerts */
             this.lastreading=timestamp;
             this.lastreading_ct=0
             return(this.lastreading_ct)
