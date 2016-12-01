@@ -1,0 +1,17 @@
+heroku config:set S3_KEY=8N029N81 S3_SECRET=9s83109d3+583493190
+
+heroku config:set THINGSPEAK_API_READ_KEY='YXYMDONR71M6WO7Y'
+heroku config:set THINGSPEAK_RUBIN_CHANNEL_ID='176785'
+heroku config:set TEXTMAGIC_API_KEY='J8HNQDzOVHjmK5Zprz4rpyNfjgIwna'
+heroku config:set RUBIN_NOTIFY_PHONE='+17036249243'
+
+heroku run npm install textmagic-rest-client
+
+$ heroku run npm install textmagic-rest-client
+Running npm install textmagic-rest-client on ⬢ wx-stn-be... up, run.5076 (Free)
+socketio@1.0.0 /app
+`-- textmagic-rest-client@0.0.5
+  `-- lodash@3.10.1
+
+npm WARN socketio@1.0.0 No repository field.
+  Wed Nov 30 16:31:14 /users/MICHAELS_MAC/wdi/projects/project4/mikewxstn (master)
