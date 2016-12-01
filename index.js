@@ -5,7 +5,7 @@
 
 
 /* Program Constants */
-
+const VERSION = "1-DEC-2016:11am"
 const PORT = 4200               /* Local Port for testing */
 const TXTMSG_NOTIFY=false       /* flag for text message notification */
 const MAX_TIME_OUTS=2           /* Wait 1 minute of no response before going offline */
@@ -39,7 +39,6 @@ const options = {
 setInterval(function(){
   request(options)
   .then(function (response){
-    console.log(response)
     var obj2 = JSON.parse(response, function(key, value) {
       if (typeof value === "string" &&
       value.substring(0, 5) === "/Foo(" &&
@@ -84,8 +83,6 @@ app.get('/', function(req, res,next) {
 
 io.on('connection', function(client) {
   connection=true;
-  console.log('Client connected...');
-
   client.on('join', function(data) {
     console.log(data);
   });
@@ -93,7 +90,6 @@ io.on('connection', function(client) {
   client.on('messages', function(data) {
     client.emit('broad', data);
     wxCstat.wxLastReading(data)
-    console.log("sending results2=",data);
     client.broadcast.emit('broad',data);
   });
 
@@ -101,12 +97,11 @@ io.on('connection', function(client) {
 /* TextMagic Msg Integration */
 if (TXTMSG_NOTIFY) {  /* only in testing will we start off by sending text message that unit has restarted */
 
-console.log("now Logging into Txt Msg")
 let c = new TMClient('mikerubin', text_magic_api_key);
 c.Messages.send({text: 'Starting Rubin-WTX Weather Stn', phones: rubin_notify_phone }, function(err, res){
     console.log('Messages.send()', err, res);
 });
 }/* TXTMSG */
-
+console.log("Server Version Running ",VERSION)
 console.log("Listening on port ",listeningPort)
 server.listen(listeningPort);

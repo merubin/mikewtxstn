@@ -9,7 +9,6 @@ socket.on('connect', function(data) {
 
 
 function drawBarChart(value) {
-    console.log("drawBarChart");
     var scale = d3.scale.linear()
         .domain([0, 50])
         .range([0, 100]);
@@ -34,12 +33,11 @@ function drawBarChart(value) {
 };
 
 function updateBarChart(value) {
-    console.log("Update here");
     var data = [value];
     drawBarChart(data);
 };
 socket.on('offline', function (data){
-  console.log("received Offline Message")
+  console.log("Received Offline Message")
   $('#Mode').html(`Mode:${data.Mode}` )
 });
 socket.on('broad', function(data) {

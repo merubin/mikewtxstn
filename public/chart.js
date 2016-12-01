@@ -2,6 +2,7 @@
 *   Mike Rubin Project 4 Charting Module
 /*****************************************************************************/
 
+const CHARTVER="1-DEC-2016:11am"
 // variables for the first series
 var series_1_channel_id = 176785;
 var series_1_field_number = 1;
@@ -23,7 +24,6 @@ var y_axis_title = 'Temp Deg °C   %Humidity';
 
 // user's timezone offset
 var my_offset = new Date().getTimezoneOffset();
-console.log("Time Offset=", my_offset)
 // chart variable
 var my_chart;
 
@@ -86,7 +86,7 @@ function addChart() {
     exporting: { enabled: false },
     legend: { enabled: false },
     credits: {
-      text: 'GA Project 4 Mike Rubin',
+      text: 'GA Project 4 Mike Rubin V'+ CHARTVER,
       href: 'https://thingspeak.com/',
       style: { color: '#D62020' }
     }
