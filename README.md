@@ -32,9 +32,20 @@ Mike's Weather Station Dashboard is a Internet of Things Project that integrates
 
 ### Installing
 
+Arduino Installation requires the IDE environment:  Here are links for installation on MAC computer
+
+Arduino IDE:
+https://www.arduino.cc/en/Main/Software
+
+ESP8266 core. Use the instructions for "Installing with Boards Manager":
+https://github.com/esp8266/Arduino
+
+You may wish to download the CP2102 USB driver but I would recommend against installing it before you have the hardware connected:
+http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx
+
 
 ```
-git clone git@github.com:MichaelZLai/FeedMe.git
+https://github.com/merubin/mikewtxstn
 
 ```
 
