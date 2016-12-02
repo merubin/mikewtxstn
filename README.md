@@ -49,11 +49,6 @@ https://github.com/merubin/mikewtxstn
 
 ```
 
-## Back-end Installation.
-
-
-## Front-end Installation.
-
 
 To begin the application locally go to the following URL:
 http://localhost:4200
