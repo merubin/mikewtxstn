@@ -5,7 +5,7 @@
 
 Mike's Weather Station Dashboard is a Internet of Things Project that integrates an ESP8266 Micro-controller, BME280 Atmospheric Pressure Sensor Temperature Humidity Sensor along with an LCD display to collect and display weather data.  This data is then sent to a cloud based repository, ThingSpeak.com and displays in real-time, the weather data collected and visualized into charts and data displays. The WX Dashboard uses Thingspeak API's to render realtime charts.  In addition to collection and displaying of data, the application provides monitoring and realtime notification of off-line failure with SMS text message alerts.
 
-![Rubin WX Station Overview](http://rubinsworld.com/ga/rubin-wx-stn/overview.png)
+![Rubin WX Station Overview](http://rubinsworld.com/ga/rubin-wx-stn/overview.ping)
 
 ### User Stories
 
