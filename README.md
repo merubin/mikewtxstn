@@ -48,6 +48,14 @@ http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx
 https://github.com/merubin/mikewtxstn
 
 ```
+## environment
+The system uses environment variables for certain API Keys.  You will need to define your keys and acquire
+the necessary keys and setup various accounts
+heroku config:set THINGSPEAK_API_READ_KEY='xxxxxxxxxxxxx'
+heroku config:set THINGSPEAK_RUBIN_CHANNEL_ID='1234567'
+heroku config:set TEXTMAGIC_API_KEY='J8HNQDzsdfdssdOVHjmK5Zprz4rpyNfjgIwna'
+heroku config:set RUBIN_NOTIFY_PHONE='+17031234567
+
 
 
 To begin the application locally go to the following URL:

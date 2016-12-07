@@ -58,9 +58,12 @@ setInterval(function(){
       if (!firstTimeOffline) {
         let c = new TMClient('mikerubin', text_magic_api_key);
         firstTimeOffline=true
+        /* TextMagic Msg Integration */
+        if (TXTMSG_NOTIFY) {  /* only in testing will we start off by sending text message that unit has restarted */
         c.Messages.send({text: 'Rubin-WTX Weather Stn Offline at:'+latestresponse.created_at, phones: rubin_notify_phone }, function(err, res){
             console.log('Messages.send()', err, res);
         });
+      } /* TXTMSG_NOTIFY */
       } /* !firstTimeOffline */
     } /* MAX_TIME_OUTS */
     else {
