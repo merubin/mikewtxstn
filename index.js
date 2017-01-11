@@ -8,6 +8,7 @@
 const VERSION = "1-DEC-2016:11am"
 const PORT = 4200               /* Local Port for testing */
 const TXTMSG_NOTIFY=false       /* flag for text message notification */
+const TXTMST_NOTIFY1=true
 const MAX_TIME_OUTS=2           /* Wait 1 minute of no response before going offline */
 
 /* Global Variables */
@@ -59,7 +60,7 @@ setInterval(function(){
         let c = new TMClient('mikerubin', text_magic_api_key);
         firstTimeOffline=true
         /* TextMagic Msg Integration */
-        if (TXTMSG_NOTIFY) {  /* only in testing will we start off by sending text message that unit has restarted */
+        if (TXTMSG_NOTIFY1) {  /* only in testing will we start off by sending text message that unit has restarted */
         c.Messages.send({text: 'Rubin-WTX Weather Stn Offline at:'+latestresponse.created_at, phones: rubin_notify_phone }, function(err, res){
             console.log('Messages.send()', err, res);
         });
