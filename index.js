@@ -8,7 +8,7 @@
 const VERSION = "1-DEC-2016:11am"
 const PORT = 4200               /* Local Port for testing */
 const TXTMSG_NOTIFY=false       /* flag for text message notification */
-const TXTMST_NOTIFY1=true
+const TXTMSG_NOTIFY1=true
 const MAX_TIME_OUTS=2           /* Wait 1 minute of no response before going offline */
 
 /* Global Variables */
